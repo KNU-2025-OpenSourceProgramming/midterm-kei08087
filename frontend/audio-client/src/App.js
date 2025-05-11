@@ -90,7 +90,7 @@ function App() {
         socketRef.current.close();
       }
     };
-  }, [websocketUrl]);
+  }, [setupWebSocket]);
 
   return (
     <Container>
