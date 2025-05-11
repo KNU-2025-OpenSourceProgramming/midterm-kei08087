@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -63,7 +63,7 @@ function App() {
     reader.readAsArrayBuffer(audioBlob);
   };
 
-  const setupWebSocket = () => {
+  const setupWebSocket = useCallback(() => {
     socketRef.current = new WebSocket(websocketUrl);
 
     socketRef.current.onopen = () => {
@@ -81,7 +81,7 @@ function App() {
     socketRef.current.onerror = (error) => {
       console.log('WebSocket error:', error);
     };
-  };
+  }, [websocketUrl]);
 
   useEffect(() => {
     setupWebSocket();
