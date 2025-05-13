@@ -96,7 +96,7 @@ function App() {
     <Container>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">Audio Recorder</Typography>
+          <Typography variant="h6">Audio Transcription App</Typography>
         </Toolbar>
       </AppBar>
       <Box mt={2}>
