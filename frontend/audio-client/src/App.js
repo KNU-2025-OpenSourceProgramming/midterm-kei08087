@@ -64,7 +64,13 @@ function App() {
   };
 
   const setupWebSocket = useCallback(() => {
-    socketRef.current = new WebSocket(websocketUrl);
+    try{
+      socketRef.current = new WebSocket(websocketUrl);
+    }
+    catch(error)
+    {
+      console.error("Websocket connection failure", error);
+    }
 
     socketRef.current.onopen = () => {
       console.log('WebSocket is connected.');
