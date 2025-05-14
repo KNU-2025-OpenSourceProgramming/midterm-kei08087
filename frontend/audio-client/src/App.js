@@ -64,7 +64,13 @@ function App() {
   };
 
   const setupWebSocket = useCallback(() => {
-    socketRef.current = new WebSocket(websocketUrl);
+    try{
+      socketRef.current = new WebSocket(websocketUrl);
+    }
+    catch(error)
+    {
+      console.error("Websocket connection failure", error);
+    }
 
     socketRef.current.onopen = () => {
       console.log('WebSocket is connected.');
@@ -96,7 +102,7 @@ function App() {
     <Container>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6">Audio Recorder</Typography>
+          <Typography variant="h6">Audio Transcription App</Typography>
         </Toolbar>
       </AppBar>
       <Box mt={2}>
